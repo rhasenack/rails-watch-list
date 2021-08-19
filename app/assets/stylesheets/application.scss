@@ -10,4 +10,21 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/cards";
 @import "pages/index";
+
+
+body {
+  background-color: rgba($color: #02081bd6, $alpha: 0.85)
+}
+
+
+.center-image {
+  display: block;
+  margin: 0 auto;
+}
+
+
+h1 {
+  font-size: 80px;
+}

@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+
   has_many :bookmarks
   before_destroy :prevent_destroy
 

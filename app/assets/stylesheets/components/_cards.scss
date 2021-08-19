@@ -1,0 +1,40 @@
+
+
+.movie-card {
+
+  display: block;
+  width: 50%;
+  height: auto;
+  //   object-fit: cover;
+  // width: 50%;
+  // height: 1016px;
+  //  width: 686px;
+  //  height: 1016px;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color:rgba(200, 200, 200, 0.9);
+  // text-align: center;
+
+  margin-bottom: 40px;
+  border-radius: 30px;
+
+  .pseudo-element {
+    height:600px;
+  }
+  .vertical-flex {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 50px;
+    p {
+      text-align: justify;
+    }
+    i {
+      margin-bottom: 20px;
+      color: yellow;
+      text-align: left;
+    }
+  }
+}

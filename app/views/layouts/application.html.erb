@@ -8,10 +8,22 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
 
   <body>
+  <div class="container">
+    <%= link_to lists_path, :action => 'go' do %>
+      <%= image_tag "popcorn.png", alt: "Le Wagon", width: 80, class: "center-image" %>
+    <% end%>
+  </div>
+    <script>
+      AOS.init();
+    </script>
     <%= yield %>
   </body>
 </html>
