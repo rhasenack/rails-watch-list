@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   # get 'lists/create'
   # get 'movies/index'
 
-  resources :lists do
+  root to: 'lists#index'
+  resources :lists, except: [:index] do
     resources :bookmarks, only: [:create, :new]
   end
 end
