@@ -23,11 +23,3 @@ import 'bootstrap';
 
 const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
-
-const cards = document.querySelectorAll('.movie-card');
-
-cards.forEach((card) => {
-  card.addEventListener('click', (event) => {
-    alert('hello');
-  })
-})

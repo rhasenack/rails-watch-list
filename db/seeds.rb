@@ -14,9 +14,6 @@ APIKEY = '027895346180bd116c3283d701264b11'
 
 url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=027895346180bd116c3283d701264b11&language=en-US&page=1'
 base_poster_url = 'https://image.tmdb.org/t/p/original'
-
-
-
 data = URI.open(url).read
 parsed_data = JSON.parse(data)
 
@@ -27,13 +24,15 @@ list1.save
 
 movies.each do |movie|
   movie = Movie.new(title: movie['title'], overview: movie['overview'], poster_url: base_poster_url + movie['poster_path'], rating: movie['vote_average'].to_f )
-  movie.save
+  unless movie.save!
+    p movie.errors.full_messages
+  end
+  bookmark = Bookmark.new(comment: 'Testing Bookmarks', movie_id: movie.id, list_id: List.first.id)
+  unless bookmark.save!
+    p bookmark.errors.full_messages
+  end
 end
 
-Movie.all[1..10].each do |movie|
-  bookmark = Bookmark.new(comment: 'Testing Bookmarks', movie_id: movie.id, list_id: List.first.id)
-  bookmark.save
-end
 
 # UPCOMING
 
@@ -47,7 +46,11 @@ list2.save
 
 movies.each do |movie|
   movie = Movie.new(title: movie['title'], overview: movie['overview'], poster_url: base_poster_url + movie['poster_path'], rating: movie['vote_average'].to_f )
-  bookmark = Bookmark.new(comment: 'Testing Bookmarks', movie_id: movie.id, list_id: List.find(2))
-  movie.save
-  bookmark.save
+  unless movie.save!
+    p movie.errors.full_messages
+  end
+  bookmark = Bookmark.new(comment: 'Testing Bookmarks', movie_id: movie.id, list_id: List.last.id)
+  unless bookmark.save!
+    p bookmark.errors.full_messages
+  end
 end
