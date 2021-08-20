@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @movies = @list.movies
+    @bookmark = Bookmark.new
   end
 
   def create
@@ -22,9 +23,20 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find(params[:id])
+    @movies = @list.movies
+    @bookmark = Bookmark.new
+    if @list.update(list_params)
+      redirect_to list_path(@list)
+    else
+      render :show
+    end
+  end
+
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end

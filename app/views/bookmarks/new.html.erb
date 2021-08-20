@@ -1,13 +1,2 @@
 
-  <div class="container">
-
-  <h1 class="pl-0 pb-1"><%= @list.name %></h1>
-  <h3 class="pb-4">new bookmark</h3>
-
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.input :movie_id, collection: Movie.all%>
-  <%= f.submit %>
-  <% end %>
-
-  </div>
+<%= render 'form', list: @list, bookmark: @bookmark %>

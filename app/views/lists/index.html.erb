@@ -2,13 +2,19 @@
 <div class="container bg-transparent">
   <h1 class="text-center">YOUR LISTS</h1>
 
-
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-12 align-self-center">
         <%= link_to list_path(list), :action => 'go' do %>
           <div class="movie-card" data-aos="fade-up" style="background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.83)),
-            url('<%= list.movies.sample.poster_url %>');">
+            url(
+              <%if list.photo.attached?%>
+                '<%='http://res.cloudinary.com/dgoz8h895/image/upload/' + list.photo.key%>'
+              <%elsif list.movies.count > 0%>
+                '<%=list.movies.sample.poster_url%>'
+              <%else%>
+              <%end%>
+             );">
             <div class="vertical-flex">
               <div class="pseudo-element"></div>
               <div><h2 class='card-title'><%= list.name %></h2></div>

@@ -14,7 +14,6 @@
 
 @import "pages/index";
 
-
 html, body {
 background-image: linear-gradient(to right top, #302b63, #262454, #1e1c45, #151537, #0f0c29);
     margin: 0;
@@ -33,5 +32,17 @@ h1 {
   font-size: 30px;
 }
 
+h5 {
+  color: black;
+}
 
-// @import "components/carousel";
+
+
+.buttons-box {
+  display: flex;
+  justify-content: center;
+}
+
+.modal {
+  color: black;
+}
