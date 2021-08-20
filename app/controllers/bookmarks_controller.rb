@@ -10,10 +10,11 @@ class BookmarksController < ApplicationController
   def create
     bookmark = Bookmark.new(bookmark_params)
     bookmark.list_id = params[:list_id]
+    @list = List.find(params[:list_id])
     if bookmark.save
       redirect_to controller: 'lists', action: 'show', id: params[:list_id]
     else
-      render :new
+      redirect_to controller: 'lists', action: 'show', id: params[:list_id]
     end
   end
 
